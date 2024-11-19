@@ -11,8 +11,20 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "create user succeeded" do
+    post users_path, params: { 
+      user: { email: 'andie@gmail.com', first_name: 'Andie', last_name: 'Tsai', address: 'QQ' }
+    }
+
+    assert_equal "Welcome to fandnext", flash[:success]
+    assert_redirected_to users_path
   end
 
   test "create user failed" do
+    post users_path, params: { 
+      user: { email: 'andie@gmail.com', first_name: 'Andie' }
+    }
+
+    assert_equal "User create failed", flash[:warning]
+    assert_template :new
   end
 end
