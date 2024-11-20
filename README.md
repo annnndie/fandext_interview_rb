@@ -5,6 +5,7 @@
 - procedue 主要作用為處理流程和程式邏輯，有助於controller 程式碼的整理，users_controller#create 及相關部份
 
 - [x] 說明 user#create 流程裡面做了什麼事 ？成功會得到什麼結果？失敗會得到什麼結果？
+
 user#create 進行了建立 user 的流程，並且將流程及邏輯包在 CreateUserProcedure 內。
 CreateUserProcedure: 
   1. 透過 verify_email_domain 驗證 domain 是否合法，不合法即 assign Error message 及 raise Error。

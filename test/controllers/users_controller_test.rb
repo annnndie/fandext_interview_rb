@@ -19,7 +19,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to users_path
   end
 
-  test "create user failed if user params is not enough" do
+  test "create user failed when user params is invalid" do
     post users_path, params: { 
       user: { email: 'andie@gmail.com', first_name: 'Andie' }
     }
@@ -28,7 +28,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_template :new
   end
 
-  test "create user failed if domain is invalid" do
+  test "create user failed when domain is invalid" do
     post users_path, params: { 
       user: { email: 'andie@qq.com', first_name: 'Andie' }
     }
